@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
+
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-heroes',
@@ -12,11 +14,7 @@ export class HeroesComponent {
 
   constructor(private HeroService: HeroService) { }
 
-  selectedHero?: Hero;
-
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-  }
+  selectedHero?: Hero; // passing a value if there's a value in it.
 
   getHeroes(): void {
     this.HeroService.getHeroes()
