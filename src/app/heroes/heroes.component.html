@@ -15,7 +15,8 @@
     <a routerLink="/detail/{{hero.id}}">
       <span class="badge">{{hero.id}}</span> {{hero.name}}
     </a>
-    <button type="button" class="delete" title="delete hero" (click)="delete(hero)">X</button> <!-- <button [class.selected]="hero === selectedHero"
+    <button type="button" class="delete" title="delete hero" (click)="delete(hero)">X</button>
+    <!-- <button [class.selected]="hero === selectedHero"
       type="button" class="heroesBtn" (click)="onSelect(hero)">
       <span class="badge">{{ hero.id }}</span>
       <span class="name">{{ hero.name }}</span>
@@ -23,7 +24,7 @@
   </li>
 </ul>
 
-<app-hero-details [hero]="selectedHero"></app-hero-details>
+<!-- <app-hero-details [hero]="selectedHero"></app-hero-details>
 
 <div *ngIf="selectedHero">
   <h2>{{selectedHero.name | uppercase}} Details</h2>
@@ -34,4 +35,4 @@
     <label for="hero-name">Hero name: </label>
     <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name" />
   </div>
-</div>
+</div> -->

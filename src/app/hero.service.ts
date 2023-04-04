@@ -73,6 +73,20 @@ export class HeroService {
     );
   }
 
+  /** GET hero by id. Return `undefined` when id not found */
+  getHeroNo404<Data>(id: number): Observable<Hero> {
+    const url = `${this.heroesUrl}/?id=${id}`;
+    return this.Http.get<Hero[]>(url)
+      .pipe(
+        map(heroes => heroes[0]), // returns a {0|1} element array
+        tap(h => {
+          const outcome = h ? 'fetched' : 'did not find';
+          this.log(`${outcome} hero id=${id}`);
+        }),
+        catchError(this.handleError<Hero>(`getHero id=${id}`))
+      );
+  }
+
   /** PUT: update the hero on the server */
   updateHero(hero: Hero): Observable<any> {
     return this.Http.put(this.heroesUrl, hero, this.httpOptions).pipe(
@@ -89,6 +103,7 @@ export class HeroService {
     );
   }
 
+  //** DELETE: Delete necessary data to the server */
   deleteHero(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
     return this.Http.delete<Hero>(url, this.httpOptions).pipe(

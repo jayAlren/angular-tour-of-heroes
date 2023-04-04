@@ -12,13 +12,13 @@ import { HeroService } from '../hero.service';
 })
 
 export class HeroDetailsComponent {
+  // @Input() hero?: Hero;
+  hero?: Hero | undefined;
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
     private location: Location
   ) { }
-
-  @Input() hero?: Hero;
 
   getHero(): void {
     const id = Number(this.route.snapshot.paramMap.get(`ìd`));
